@@ -1,0 +1,39 @@
+curl -X 'POST' \
+  'http://localhost:5000/Login-Register/login' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "creator",
+  "password": "8888"
+}'
+
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwOTcyNjQxMSwianRpIjoiZmI1ZWRlYWQtZjI5Ny00MDkzLWFhMDgtMTljNTcyNTE5OGJjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA5NzI2NDExLCJjc3JmIjoiYmVlNTIzNDQtYTIyZS00MjJkLWEzMzktMmEyY2E0MTI2NDQ3IiwiZXhwIjoxNzA5NzI3MzExfQ.uqOCEJjYativ25zbxEYApvhL8BJBqOXjGW5YzhlsnOY
+
+
+
+
+Curl
+
+curl -X 'POST' \
+  'http://localhost:5000/Logged-Area/v1/sentiment' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwOTcyNjQxMSwianRpIjoiZmI1ZWRlYWQtZjI5Ny00MDkzLWFhMDgtMTljNTcyNTE5OGJjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA5NzI2NDExLCJjc3JmIjoiYmVlNTIzNDQtYTIyZS00MjJkLWEzMzktMmEyY2E0MTI2NDQ3IiwiZXhwIjoxNzA5NzI3MzExfQ.uqOCEJjYativ25zbxEYApvhL8BJBqOXjGW5YzhlsnOY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "creator",
+  "text": "the quick brown fox jumps over the lazy dog"
+}'
+
+
+
+curl -X 'POST' \
+  'http://localhost:5000/Logged-Area/v2/sentiment' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwOTcyNjQxMSwianRpIjoiZmI1ZWRlYWQtZjI5Ny00MDkzLWFhMDgtMTljNTcyNTE5OGJjIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzA5NzI2NDExLCJjc3JmIjoiYmVlNTIzNDQtYTIyZS00MjJkLWEzMzktMmEyY2E0MTI2NDQ3IiwiZXhwIjoxNzA5NzI3MzExfQ.uqOCEJjYativ25zbxEYApvhL8BJBqOXjGW5YzhlsnOY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "creator",
+  "text": "the quick brown fox jumps over the lazy dog"
+}'
