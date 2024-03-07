@@ -1,0 +1,201 @@
+username,password,email,address,entity,role,usage_purpose,v1,v2,v3
+Michelle.Delaunay,4295,Michelle.Delaunay@hotmail.com,"74, boulevard Ferreira
+35280 Sainte Madeleinenec",Rivière Clément SARL,customer,stock_market,True,True,False
+Dorothée.Berger,5932,Dorothée.Berger@yahoo.com,"76, rue Patricia Peltier
+32881 Bodin-sur-Mer",Lévy Didier et Fils,customer,reviews,False,False,False
+Agathe.Bouchet,3055,Agathe.Bouchet@yahoo.com,"9, rue André Bousquet
+04595 Hardy-sur-Mer",Rodrigues S.A.R.L.,customer,reviews,False,False,False
+Céline.Devaux,1566,Céline.Devaux@yahoo.com,"39, rue Klein
+18890 Delannoy",Guichard,customer,stock_market,False,True,True
+Thomas.Benoit,2011,Thomas.Benoit@gmail.com,"rue Gomez
+33608 Martindan",Brunet S.A.,customer,stock_market,False,False,True
+Émile.Maillard,9990,Émile.Maillard@gmail.com,"boulevard Carpentier
+53656 Jacquot",Berthelot S.A.R.L.,customer,stock_market,True,False,False
+Édouard.Pages,8068,Édouard.Pages@gmail.com,"37, chemin Susanne Huet
+93316 Poirier",Lacroix,customer,stock_market,False,True,False
+Lucas.Julien,1073,Lucas.Julien@gmail.com,"20, rue de Robert
+67858 Delaunay-la-Forêt",Neveu,customer,reviews,False,False,False
+Olivie.Olivier,7154,Olivie.Olivier@hotmail.com,"28, avenue Christine Pires
+82645 Duval",Guyon Bazin SARL,customer,stock_market,False,False,True
+Alexandria.Colas,5882,Alexandria.Colas@gmail.com,"chemin Bernard Gros
+60699 Girard-sur-Lefort",Regnier,customer,stock_market,True,True,False
+Isaac.Launay,2559,Isaac.Launay@yahoo.com,"1, chemin de Gautier
+05703 Thomas-sur-Dumas",individual,customer,reviews,True,True,True
+Célina.Cordier,9196,Célina.Cordier@yahoo.com,"7, avenue Agnès Rodrigues
+50168 Saint Gabrielle",Roche S.A.S.,customer,news,True,False,False
+Charlotte.Delorme,9793,Charlotte.Delorme@hotmail.com,"rue Neveu
+22873 Saint Alexandrie-la-Forêt",Lebreton et Fils,customer,reviews,False,False,True
+Danielle.Leroy,2503,Danielle.Leroy@gmail.com,"chemin Camus
+58168 Marienec",individual,customer,reviews,True,False,False
+Nathalie.Menard,9258,Nathalie.Menard@gmail.com,"83, boulevard de Millet
+03647 Sainte Alexandrianec",individual,customer,stock_market,False,False,False
+Cécile.Antoine,9010,Cécile.Antoine@gmail.com,"5, avenue Perrier
+39724 Gomes-la-Forêt",Maillet Rodrigues S.A.S.,customer,reviews,True,False,False
+Thierry.Peltier,6578,Thierry.Peltier@yahoo.com,"rue de Torres
+44426 Pires",Gay Hubert S.A.S.,customer,reviews,False,True,True
+Daniel.Pruvost,5013,Daniel.Pruvost@hotmail.com,"3, boulevard Richard Gérard
+95265 De Sousanec",individual,customer,reviews,True,False,True
+Aurore.Gaudin,6500,Aurore.Gaudin@yahoo.com,"4, avenue Garcia
+79938 Saint Claire",individual,customer,news,False,True,True
+Adèle.Jacquet,8878,Adèle.Jacquet@hotmail.com,"40, chemin de Chevallier
+57829 Fleury",Pires,customer,reviews,True,True,True
+Charles.De Oliveira,8740,Charles.De Oliveira@hotmail.com,"rue Julien Martineau
+70151 Menard",Collin,customer,reviews,True,False,True
+Nathalie.Pereira,6838,Nathalie.Pereira@gmail.com,"487, rue de Ferrand
+15927 Dupont",individual,customer,reviews,False,False,True
+Rémy.Hebert,6087,Rémy.Hebert@hotmail.com,"avenue Astrid Clément
+65199 Étienne",individual,customer,stock_market,False,False,False
+Suzanne.Vaillant,5369,Suzanne.Vaillant@gmail.com,"12, rue Marty
+84502 Pruvost-sur-Gomes",individual,customer,reviews,False,True,True
+Aimée.Lopes,6860,Aimée.Lopes@hotmail.com,"15, chemin Fernandes
+21778 Saint William",Roux,customer,reviews,False,True,False
+Louise.Munoz,3574,Louise.Munoz@yahoo.com,"57, chemin Ruiz
+49377 Le Goff-sur-Marie",individual,customer,stock_market,True,False,False
+Henri.Hoareau,1834,Henri.Hoareau@hotmail.com,"36, rue Benjamin Ramos
+83734 Dumontboeuf",Camus,customer,news,True,False,True
+Édouard.Verdier,9437,Édouard.Verdier@hotmail.com,"3, boulevard de Ledoux
+35693 Bonnet-sur-Bruneau",individual,customer,reviews,True,False,True
+Guy.Petit,2578,Guy.Petit@yahoo.com,"57, boulevard de Maréchal
+79120 Sainte Paulette",individual,customer,reviews,False,True,False
+Guillaume.Collin,4312,Guillaume.Collin@hotmail.com,"avenue Thibaut Leclercq
+37313 Thibault-la-Forêt",individual,customer,reviews,True,False,True
+Amélie.Hardy,6792,Amélie.Hardy@hotmail.com,"336, rue Giraud
+29884 Lebonboeuf",individual,customer,reviews,False,True,True
+Diane.Fournier,2861,Diane.Fournier@yahoo.com,"97, rue de Colin
+94305 Allardnec",individual,customer,reviews,True,False,True
+Michelle.François,6758,Michelle.François@gmail.com,"222, rue Guillet
+26210 Jacquot",individual,customer,stock_market,True,False,True
+Élodie.Colin,5644,Élodie.Colin@yahoo.com,"75, boulevard de Da Costa
+63406 Jacques",individual,customer,news,False,True,False
+Anne.Weiss,4477,Anne.Weiss@gmail.com,"64, rue Nicole Peltier
+69870 Gaillard",Ferreira,customer,reviews,True,True,True
+Dorothée.Bailly,7444,Dorothée.Bailly@hotmail.com,"4, rue de Bouvier
+97115 Sainte Lucy",individual,customer,stock_market,True,True,True
+Denis.Pages,9197,Denis.Pages@hotmail.com,"94, rue de Boulanger
+39579 Perretnec",individual,customer,news,False,True,False
+Sophie.Gauthier,3112,Sophie.Gauthier@hotmail.com,"412, chemin Lamy
+07909 Da Silva",Martinez Coulon SARL,customer,news,True,False,False
+Anaïs.Bruneau,4200,Anaïs.Bruneau@hotmail.com,"88, rue Chauvin
+45670 SalmonBourg",Teixeira Bigot SARL,customer,news,True,True,False
+Geneviève.Boucher,6904,Geneviève.Boucher@yahoo.com,"85, rue Lemoine
+09376 Le Roux",Lacroix,customer,stock_market,False,False,False
+Marcelle.Dubois,2238,Marcelle.Dubois@hotmail.com,"31, avenue Robert Guillaume
+10677 Pineau",Charpentier,customer,stock_market,False,False,True
+Sabine.Petit,3651,Sabine.Petit@yahoo.com,"67, rue Millet
+64782 Saint Joséphine-les-Bains",Dumont Dijoux SA,customer,stock_market,True,False,True
+Agnès.Renault,9214,Agnès.Renault@yahoo.com,"49, rue Sylvie Lagarde
+18688 DuvalVille",individual,customer,reviews,True,True,False
+Louise.Marin,8159,Louise.Marin@gmail.com,"77, rue Germain
+97264 Dupré",Mercier,customer,news,True,True,False
+Franck.Auger,5395,Franck.Auger@hotmail.com,"52, rue Joubert
+48672 Langlois-les-Bains",Maurice,customer,news,True,True,True
+Aurore.Pasquier,3968,Aurore.Pasquier@gmail.com,"77, rue Thibaut Seguin
+66379 Imbertboeuf",Dufour,customer,news,False,False,False
+Arnaude.Simon,6411,Arnaude.Simon@yahoo.com,"rue Vaillant
+97291 Saint Charles",individual,customer,stock_market,True,False,False
+Sophie.Gilbert,5754,Sophie.Gilbert@yahoo.com,"8, boulevard Patrick Da Silva
+01970 Morin-les-Bains",individual,customer,stock_market,False,True,False
+Patricia.Mercier,9705,Patricia.Mercier@hotmail.com,"rue Hoarau
+46114 LeducVille",Barre SARL,customer,news,True,True,False
+Bernard.Carlier,7768,Bernard.Carlier@hotmail.com,"77, avenue Arnaude Wagner
+71177 Hamel-sur-Rodrigues",individual,customer,news,False,True,True
+Lucie.Allard,4521,Lucie.Allard@hotmail.com,"rue de Marchal
+63937 Saint Julesnec",Pasquier et Fils,customer,reviews,False,True,True
+Arnaude.Wagner,2753,Arnaude.Wagner@hotmail.com,"41, boulevard Brigitte Léger
+06276 Legendre-la-Forêt",Alexandre,customer,reviews,True,False,True
+Hugues.Jourdan,6809,Hugues.Jourdan@hotmail.com,"7, chemin de Masson
+97417 GrondinBourg",individual,customer,reviews,False,True,False
+Édouard.Salmon,2272,Édouard.Salmon@gmail.com,"18, avenue Antoinette Gosselin
+77460 Tessier",individual,customer,news,True,True,False
+Nicole.Jacquot,3894,Nicole.Jacquot@yahoo.com,"57, chemin de Chevalier
+90442 Delorme",individual,customer,stock_market,False,False,False
+Matthieu.Morvan,1805,Matthieu.Morvan@yahoo.com,"87, boulevard Chevalier
+41568 ThomasVille",individual,customer,news,False,True,False
+Henriette.Dupuy,2459,Henriette.Dupuy@yahoo.com,"2, boulevard Noémi Louis
+67396 DupuyBourg",Imbert,customer,reviews,True,True,False
+Marcelle.Perrot,2518,Marcelle.Perrot@hotmail.com,"894, avenue de Torres
+12437 Saint Adrienne-les-Bains",individual,customer,reviews,True,True,True
+Marianne.Fontaine,4802,Marianne.Fontaine@yahoo.com,"1, rue Masse
+91185 Vidal-les-Bains",individual,customer,reviews,False,True,False
+Jeanne.Weiss,4776,Jeanne.Weiss@gmail.com,"88, chemin de Chartier
+60193 Noël",individual,customer,stock_market,False,True,False
+Célina.Bailly,5118,Célina.Bailly@gmail.com,"85, chemin de Robin
+38149 Chevalier",individual,customer,reviews,False,False,False
+Alex.Durand,5935,Alex.Durand@gmail.com,"98, rue Antoine
+73728 Perrin",Hervé S.A.,customer,stock_market,True,False,False
+Véronique.Roche,9520,Véronique.Roche@gmail.com,"3, boulevard Thibault Guillou
+56569 Paul",Millet,customer,stock_market,True,False,False
+Laetitia.Ferreira,9055,Laetitia.Ferreira@yahoo.com,"44, avenue Imbert
+54845 Mallet-sur-Bernard",Marchal,customer,stock_market,False,True,True
+Laurence.François,9821,Laurence.François@gmail.com,"boulevard Agathe Dupré
+05255 Hamon-sur-Lefebvre",individual,customer,reviews,False,False,True
+Éric.Pottier,4474,Éric.Pottier@yahoo.com,"297, rue de Lecoq
+07928 Menardnec",Benoit,customer,stock_market,False,False,True
+Élise.Lemoine,5049,Élise.Lemoine@hotmail.com,"58, avenue Voisin
+08174 Pelletier-sur-Dias",individual,customer,stock_market,True,True,False
+Diane.Normand,4241,Diane.Normand@gmail.com,"48, rue Labbé
+97298 Hoareau",Fernandes S.A.,customer,reviews,False,True,False
+Jules.Verdier,5826,Jules.Verdier@gmail.com,"752, avenue de Coste
+01780 Samson-les-Bains",individual,customer,stock_market,False,True,False
+Aimé.Richard,3068,Aimé.Richard@gmail.com,"58, boulevard de Georges
+67794 Verdier-sur-Marin",Garcia Delaunay S.A.,customer,stock_market,False,True,True
+Laurent.Lopes,8961,Laurent.Lopes@hotmail.com,"40, boulevard Dumas
+35529 Guichard",individual,customer,news,True,True,True
+Antoinette.Torres,5485,Antoinette.Torres@hotmail.com,"rue de Brun
+53753 Cohen",individual,customer,stock_market,True,False,True
+Henri.Leclerc,1248,Henri.Leclerc@gmail.com,"94, boulevard de Delannoy
+97266 Saint Claudine-sur-Mer",individual,customer,news,False,False,True
+Yves.Laroche,7639,Yves.Laroche@yahoo.com,"41, chemin de Perrier
+72494 Hoarau",Colas S.A.S.,customer,stock_market,False,False,True
+Michelle.Meunier,3379,Michelle.Meunier@yahoo.com,"rue de Lemaire
+22947 Dos Santos",Leclerc,customer,reviews,True,False,False
+Julie.Chrétien,5537,Julie.Chrétien@yahoo.com,"481, rue de Schmitt
+08592 Sainte Francknec",individual,customer,stock_market,True,True,True
+Marcel.Weber,2000,Marcel.Weber@yahoo.com,"31, chemin de Bertin
+90330 Martel-sur-Texier",Benard S.A.R.L.,customer,reviews,True,True,False
+Nathalie.Lévy,8036,Nathalie.Lévy@yahoo.com,"42, avenue Suzanne Poirier
+21345 AubertBourg",Buisson Fernandez et Fils,customer,reviews,False,True,True
+Jacqueline.Rémy,6916,Jacqueline.Rémy@gmail.com,"36, rue Vincent
+63946 Da Costa",individual,customer,news,True,False,False
+Valentine.Bodin,7489,Valentine.Bodin@hotmail.com,"515, chemin de Le Goff
+32330 Rivière",individual,customer,stock_market,False,False,True
+Christelle.Brunel,1301,Christelle.Brunel@hotmail.com,"92, rue Édith Voisin
+71285 Saint Mariannenec",individual,customer,news,False,True,True
+Corinne.Bègue,8958,Corinne.Bègue@yahoo.com,"boulevard Rousset
+13938 Sanchez-la-Forêt",individual,customer,reviews,False,False,False
+Roger.Barre,7972,Roger.Barre@yahoo.com,"52, boulevard Michel
+90403 Saint Manon",individual,customer,stock_market,False,False,False
+Madeleine.Lacroix,4145,Madeleine.Lacroix@gmail.com,"877, chemin Martinez
+23539 Martins",individual,customer,reviews,False,True,False
+Pauline.De Oliveira,9922,Pauline.De Oliveira@yahoo.com,"435, boulevard de Ribeiro
+70991 Adam-la-Forêt",individual,customer,stock_market,True,True,False
+Nicole.Foucher,3710,Nicole.Foucher@gmail.com,"75, rue Pelletier
+43602 Legrosboeuf",Huet Guyot SA,customer,reviews,True,True,True
+Michelle.Jourdan,6594,Michelle.Jourdan@hotmail.com,"877, chemin de Gimenez
+76558 Olivier-sur-Mace",Collet,customer,news,False,True,True
+Thérèse.Thierry,4342,Thérèse.Thierry@hotmail.com,"830, avenue Jeannine Lebon
+91681 Saint Lucy",Dupont,customer,reviews,True,False,False
+Théodore.Poulain,2880,Théodore.Poulain@yahoo.com,"1, chemin de Delannoy
+76409 Saint Agnès",Grenier,customer,news,True,True,False
+Bertrand.Chauvet,6108,Bertrand.Chauvet@gmail.com,"856, rue Denis Roger
+80401 Maillarddan",Bonneau,customer,reviews,True,False,True
+Margaux.Leroy,3319,Margaux.Leroy@hotmail.com,"57, chemin Lefebvre
+87338 Le Rouxdan",Clerc,customer,stock_market,True,False,True
+Xavier.Marchand,8427,Xavier.Marchand@gmail.com,"672, rue Barbier
+16933 Fouquet",individual,customer,stock_market,False,True,True
+Guy.Fournier,7087,Guy.Fournier@gmail.com,"rue de Perrot
+19754 Valette",individual,customer,news,False,True,True
+Grégoire.Moreau,4967,Grégoire.Moreau@yahoo.com,"boulevard Mathilde Faivre
+68115 Barthelemy-sur-Mer",Fernandes et Fils,customer,news,True,True,True
+Victor.Morel,5424,Victor.Morel@hotmail.com,"11, avenue Morel
+10265 Morvan-sur-Lelièvre",individual,customer,news,True,True,False
+Marcelle.Brunet,7779,Marcelle.Brunet@hotmail.com,"1, rue Parent
+97611 Morel",Hoarau,customer,reviews,False,False,False
+Claudine.Lopez,9898,Claudine.Lopez@yahoo.com,"9, rue Jean Lacroix
+61315 Saint Luc-la-Forêt",individual,customer,reviews,True,True,False
+Marthe.Vincent,1410,Marthe.Vincent@gmail.com,"34, rue Lucie Schneider
+18732 Hameldan",individual,customer,news,True,True,True
+Alain.Clément,3881,Alain.Clément@hotmail.com,"80, rue Mahe
+23831 GuillonVille",individual,customer,news,True,False,False
+Vincent.Pereira,5160,Vincent.Pereira@hotmail.com,"44, boulevard René Besson
+22588 Sainte Paulette",Benard Gérard SA,customer,news,False,True,True

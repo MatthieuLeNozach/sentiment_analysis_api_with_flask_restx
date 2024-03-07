@@ -4,11 +4,17 @@ import os
 from sqlalchemy.engine.reflection import Inspector
 from sqlalchemy import inspect
 from werkzeug.security import check_password_hash
-
+import pandas as pd
+import os
+from werkzeug.security import check_password_hash
+from bin.add_customer_base import add_customer_base
+from bin.initialize_db import initialize_db
+from app.models import User
 
 # Correctly set the project root to ensure imports work as expected
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
+print("project_root from test_bin.py", project_root, end='\n\n')
 
 from app import create_app, db  # Correctly import create_app and db
 
@@ -28,8 +34,8 @@ class InitializeDBTest(unittest.TestCase):
         self.app_context.pop()
 
     def test_db_initialization(self):
-        from bin.initialize_db import init_db
-        init_db(force=True)  # Force re-initialization if needed
+        from bin.initialize_db import initialize_db
+        initialize_db(force=True)  # Force re-initialization if needed
 
         # Use SQLAlchemy's inspect function to get table names
         inspector = inspect(db.engine)
@@ -69,11 +75,7 @@ class AddCreatorTest(unittest.TestCase):
         
         
         
-import pandas as pd
-import os
-from werkzeug.security import check_password_hash
-from bin.add_customer_base import add_customer_base
-from app.models import User
+
 
 class AddCustomerBaseTest(unittest.TestCase):
     def setUp(self):
@@ -91,10 +93,10 @@ class AddCustomerBaseTest(unittest.TestCase):
 
     def test_add_customer_base(self):
         # Load the CSV file and count the number of rows
-        csv_path = os.path.join(os.path.dirname(__file__), '../data/credentials.csv')
-        df = pd.read_csv(csv_path)
-        print(df.head(10))  # Print the first 10 rows of the CSV
-
+        df = pd.read_csv('data/mock_customer_base.csv')
+        print("mock_customer_base.csv from test_bin.py\n", df.head(3), end='\n\n')
+        print('Unique usernames:', df['username'].nunique(), end='\n\n')
+        
         initial_user_count = User.query.count()
         add_customer_base()
         db.session.commit()
@@ -110,6 +112,12 @@ class AddCustomerBaseTest(unittest.TestCase):
             self.assertIsNotNone(user, f"User '{row['username']}' should exist")
             self.assertEqual(user.access_v1, row['v1'])
             self.assertEqual(user.access_v2, row['v2'])
+            self.assertEqual(user.access_v3, row['v3'])
+            self.assertEqual(user.email, row['email'])
+            self.assertEqual(user.address, row['address'])
+            self.assertEqual(user.entity, row['entity'])
+            self.assertEqual(user.role, row['role'])
+            self.assertEqual(user.usage_purpose, row['usage_purpose'])
             self.assertTrue(check_password_hash(user.password_hash, str(row['password'])), f"User '{row['username']}' password should be correctly hashed")
 
         # Print the first 10 rows of the database

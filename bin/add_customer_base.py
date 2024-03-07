@@ -16,7 +16,7 @@ from app.models import User
 
 def add_customer_base():
     # Load your DataFrame here, e.g., from a CSV file
-    df = pd.read_csv('data/credentials.csv')
+    df = pd.read_csv('data/mock_customer_base.csv')
     
     for index, row in df.iterrows():
         existing_user = User.query.filter_by(username=row['username']).first()
@@ -25,8 +25,13 @@ def add_customer_base():
                 username=row['username'], 
                 password_hash=generate_password_hash(str(row['password'])), 
                 role='customer',
+                email=row['email'],
+                address=row['address'],
+                entity=row['entity'],
+                usage_purpose=row['usage_purpose'],
                 access_v1=row['v1'],  # Assuming these columns exist in your CSV
-                access_v2=row['v2']
+                access_v2=row['v2'],
+                access_v3=row['v3']
             )
             db.session.add(user)
 
