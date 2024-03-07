@@ -10,6 +10,19 @@ user_model = api.model("User", { # defining the structure of the User object tha
     "nlp_v2": fields.Boolean
 })
 
+user_extended_model = api.model("UserExtended", {
+    "id": fields.Integer,
+    "username": fields.String,
+    "email": fields.String,
+    "address": fields.String,
+    "entity": fields.String,
+    "usage_purpose": fields.String,
+    "role": fields.String,
+    "access_v1": fields.Boolean,
+    "access_v2": fields.Boolean,
+    "access_v3": fields.Boolean
+})
+
 user_input_model = api.model("UserInput", {
     "username": fields.String,
     "role": fields.String,  
@@ -19,6 +32,15 @@ user_input_model = api.model("UserInput", {
 login_model = api.model("LoginModel", {
     "username": fields.String,
     "password": fields.String
+})
+
+
+register_model = api.model("Register", {
+    "username": fields.String(required=True),
+    "email": fields.String(required=True),
+    "password": fields.String(required=True),
+    "entity": fields.String(required=True),
+    "usage_purpose": fields.String(required=True),
 })
 
 

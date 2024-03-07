@@ -44,9 +44,9 @@ class PrivateRoutesTestCase(BaseTestCase):
         super().setUp()
         
         self.user_data = {
-            'username': 'Megan', # Customer having access to all models
-            'password': '6837',
-            'role': 'customer'
+            'username': 'admin1', # Customer having access to all models
+            'password': '8888',
+            'role': 'admin',
         }
         
         self.create_mock_user(self.user_data['username'], self.user_data['password'], self.user_data['role'])

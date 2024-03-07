@@ -1,9 +1,10 @@
 import random
 import string
+import json
 from flask import request
 from flask_restx import Resource, Namespace
 from flask_jwt_extended import jwt_required, current_user
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_jwt_extended import create_access_token
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,8 +14,9 @@ from .models import User
 from .api_models import user_model, user_input_model, login_model, change_password_input_model
 from .api_models import prediction_input_model, prediction_model_v1, prediction_model_vader 
 from .extensions import db
+from .utils import log_request_response
 
-#from .extensions import jwt
+# from .extensions import jwt
 
 authorizations = {
     'jsonWebToken': {
@@ -173,12 +175,15 @@ class NLPSentimentPredictorV1(Resource):
     @ns_private.marshal_with(prediction_model_v1)
     @ns_private.doc(security='jsonWebToken')
     def post(self):
+        user_id = get_jwt_identity()
         # Assuming current_user is set up by the JWT extension to represent the logged-in user
         if not current_user.access_v1 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
         data = request.get_json()
         text = data.get('text')
         sentiment, score = predict_sentiment_v1(text)
+        
+        log_request_response(current_user.id, 'v1', text, sentiment)
         return {'text': text, 'sentiment': sentiment, 'score': score}, 200
 
 @ns_private.route('/v2/sentiment')
@@ -188,18 +193,26 @@ class NLPSentimentPredictorVader(Resource):
     @ns_private.marshal_with(prediction_model_vader)
     @ns_private.doc(security='jsonWebToken')
     def post(self):
-        # Assuming current_user is set up by the JWT extension to represent the logged-in user
         if not current_user.access_v2 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
+        
         data = request.get_json()
         text = data.get('text')
         analysis = predict_sentiment_vader(text)
-        response = {
+        
+        # Prepare the response content
+        response_content = json.dumps({
             'text': text, 
             'positive': analysis['pos'],
             'neutral': analysis['neu'], 
             'negative': analysis['neg'],
             'score': analysis['compound'],
             'interpretation': analysis['interpretation']
-        }, 200
-        return response
+        })
+        
+        log_request_response(current_user.id, 'v2', text, response_content)
+        
+        return json.loads(response_content) 
+    
+    
+    
