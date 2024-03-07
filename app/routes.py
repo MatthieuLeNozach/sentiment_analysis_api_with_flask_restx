@@ -24,10 +24,10 @@ authorizations = {
     }
 }
 
-ns_public = Namespace('Rest API - Flask RESTX')
-ns_login = Namespace('Login-Register')
-ns_admin = Namespace('Admin-Only', authorizations=authorizations)
-ns_private = Namespace('Logged-Area', authorizations=authorizations)
+ns_public = Namespace('public')
+ns_login = Namespace('auth')
+ns_admin = Namespace('admin', authorizations=authorizations)
+ns_private = Namespace('private', authorizations=authorizations)
 
 
 def admin_required(f):
@@ -43,7 +43,7 @@ def admin_required(f):
 @ns_public.route('/hello')
 class Hello(Resource):
     def get(self):
-        return {'Welcome': 'NLP Sentiment Predictor API'}
+        return {'Welcome': 'NLP Sentiment Predictor API'}, 200
 
 
 @ns_login.route('/register')
@@ -51,7 +51,10 @@ class Register(Resource):
     @ns_login.expect(login_model)
     @ns_login.marshal_with(user_model)
     def post(self):
-        user = User(username=ns_login.payload['username'], password_hash=generate_password_hash(ns_login.payload['password']))
+        user = User(
+            username=ns_login.payload['username'], 
+            role='customer',
+            password_hash=generate_password_hash(ns_login.payload['password']))
         db.session.add(user)
         db.session.commit()
         return user, 201
@@ -72,19 +75,28 @@ class Login(Resource):
 
 
 
-@ns_public.route('/users')
+@ns_admin.route('/users')
 class GetUsers(Resource):
-    @ns_public.marshal_list_with(user_model)
+    method_decorators = [jwt_required()]
+
+    @ns_admin.expect(user_input_model)
+    @ns_admin.marshal_with(user_model)
+    @ns_admin.doc(security='jsonWebToken')
     def get(self):
         return User.query.all()
 
 
-@ns_public.route('/users/<int:id>')
+@ns_private.route('/users/<int:id>')
 class GetUserID(Resource):
-    @ns_public.marshal_with(user_model)
+    method_decorators = [jwt_required()]
+
+    @ns_private.expect(user_input_model)
+    @ns_private.marshal_with(user_model)
     def get(self, id):
-        user = User.query.get(id)
-        return user, 201
+        logged_in_user = User.query.filter_by(username=ns_private.payload['username']).first()
+        if logged_in_user.id != id:
+            ns_private.abort(403, "Forbidden, user can only access their own information")
+        return logged_in_user, 201
 
 
 
@@ -118,7 +130,6 @@ class AddUsers(Resource):
 @ns_admin.route('/users/<int:id>')
 class EditUsers(Resource):
     method_decorators = [jwt_required()]
-
     @ns_admin.expect(user_input_model)
     @ns_admin.marshal_with(user_model)
     @ns_admin.doc(security='jsonWebToken')
@@ -129,7 +140,6 @@ class EditUsers(Resource):
         user.access_v2 = ns_admin.payload['access_v2']
         db.session.commit()
         return user, 200
-    
     
 
     @ns_private.doc(security='jsonWebToken')
@@ -160,6 +170,9 @@ class UserChangePasswordAPI(Resource):
         return user, 200
     
     
+from flask import request
+from flask_jwt_extended import current_user
+
 @ns_private.route('/v1/sentiment')
 class NLPSentimentPredictorV1(Resource):
     method_decorators = [jwt_required()]
@@ -167,19 +180,16 @@ class NLPSentimentPredictorV1(Resource):
     @ns_private.marshal_with(prediction_model_v1)
     @ns_private.doc(security='jsonWebToken')
     def post(self):
-        user = User.query.filter_by(username=ns_private.payload['username']).first()
-        if user is None:
-            ns_private.abort(404, "User not found")
-        if not user.access_v1 and 'admin' not in user.role:
+        # Assuming current_user is set up by the JWT extension to represent the logged-in user
+        if not current_user.access_v1 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
-            
-        text = ns_private.payload['text']
+        
+        data = request.json
+        text = data.get('text')
         sentiment, score = predict_sentiment_v1(text)
         
         return {'text': text, 'sentiment': sentiment, 'score': score}, 200
-    
-    
-    
+
 @ns_private.route('/v2/sentiment')
 class NLPSentimentPredictorVader(Resource):
     method_decorators = [jwt_required()]
@@ -187,16 +197,15 @@ class NLPSentimentPredictorVader(Resource):
     @ns_private.marshal_with(prediction_model_vader)
     @ns_private.doc(security='jsonWebToken')
     def post(self):
-        user = User.query.filter_by(username=ns_private.payload['username']).first()
-        if user is None:
-            ns_private.abort(404, "User not found")
-        if not user.access_v1 and 'admin' not in user.role:
+        # Assuming current_user is set up by the JWT extension to represent the logged-in user
+        if not current_user.access_v1 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
-            
-        text = ns_private.payload['text']
+        
+        data = request.json
+        text = data.get('text')
         analysis = predict_sentiment_vader(text)
         
-        response =  {
+        response = {
             'text': text, 
             'positive': analysis['pos'],
             'neutral': analysis['neu'], 
@@ -206,7 +215,3 @@ class NLPSentimentPredictorVader(Resource):
         }, 200
         
         return response
-        
-        
-        
-print('the quick brown fox jumps over the lazy dog')

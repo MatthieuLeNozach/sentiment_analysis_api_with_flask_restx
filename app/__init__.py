@@ -4,12 +4,12 @@ from .extensions import api, db, jwt  # importing the objects created in extensi
 from .routes import ns_public, ns_login, ns_admin, ns_private  # importing the namespace that registers the API routes
 from .models import User
 
-def create_app():
+def create_app(testing=False):
     
     app = Flask(__name__)  
 
     # passing configurations to the app
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'  # the database will be created in the 'instance' folder
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3' if not testing else 'sqlite:///:memory:'
     app.config['JWT_SECRET_KEY'] = 'SecretKeyExample'    
     
     authorizations = {

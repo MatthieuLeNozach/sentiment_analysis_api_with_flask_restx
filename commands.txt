@@ -37,3 +37,23 @@ curl -X 'POST' \
   "username": "creator",
   "text": "the quick brown fox jumps over the lazy dog"
 }'
+
+
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username": "Megan", "password": "6837"}' \
+  http://localhost:5000/auth/login
+
+
+curl -X 'POST' \
+  'http://localhost:5000/private/v1/sentiment' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwOTc1OTYyOSwianRpIjoiNGJlMmY0ZDMtODc5NC00MmJiLTg3OWUtMmY1ODM1ODljZmQ0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NywibmJmIjoxNzA5NzU5NjI5LCJjc3JmIjoiMWU2MzI3YzUtZmZiYS00ZmE4LThlMTktNDExYzI3OWIzMGFiIiwiZXhwIjoxNzA5NzYwNTI5fQ.RURGi9Bw31FbHOvUU5uWKg57kbELWCwbuzUa4fJ926A' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "Megan",
+  "text": "I would have loved this movie, if I was super stupid"
+}'
+
+
