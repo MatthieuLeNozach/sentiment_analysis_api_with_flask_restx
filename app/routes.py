@@ -51,29 +51,32 @@ class Register(Resource):
     @ns_login.expect(login_model)
     @ns_login.marshal_with(user_model)
     def post(self):
+        data = request.get_json()
         user = User(
-            username=ns_login.payload['username'], 
+            username=data['username'], 
             role='customer',
-            password_hash=generate_password_hash(ns_login.payload['password']))
+            password_hash=generate_password_hash(data['password']))
         db.session.add(user)
         db.session.commit()
         return user, 201
-
 
 @ns_login.route('/login')
 class Login(Resource):
     @ns_login.expect(login_model)
     @ns_login.doc(params={'username': "The username of the user", 'password': "The password of the user"})
     def post(self):
-        user = User.query.filter_by(username=ns_login.payload['username']).first()
+        data = request.get_json()
+        user = User.query.filter_by(username=data['username']).first()
         if not user:
             return {'error': "User does not exists"}, 401
-        if not check_password_hash(user.password_hash, ns_login.payload['password']):
+        if not check_password_hash(user.password_hash, data['password']):
             return {'error': "Incorrect password"}, 401
         return {'access token': create_access_token(identity=user)}
 
 
 
+
+from flask import request
 
 @ns_admin.route('/users')
 class GetUsers(Resource):
@@ -85,7 +88,6 @@ class GetUsers(Resource):
     def get(self):
         return User.query.all()
 
-
 @ns_private.route('/users/<int:id>')
 class GetUserID(Resource):
     method_decorators = [jwt_required()]
@@ -93,14 +95,11 @@ class GetUserID(Resource):
     @ns_private.expect(user_input_model)
     @ns_private.marshal_with(user_model)
     def get(self, id):
-        logged_in_user = User.query.filter_by(username=ns_private.payload['username']).first()
+        data = request.get_json()
+        logged_in_user = User.query.filter_by(username=data['username']).first()
         if logged_in_user.id != id:
             ns_private.abort(403, "Forbidden, user can only access their own information")
         return logged_in_user, 201
-
-
-
-
 
 @ns_admin.route('/users')
 class AddUsers(Resource):
@@ -116,17 +115,16 @@ class AddUsers(Resource):
             ns_admin.abort(404, "User not found")
         if current_user.role != 'admin':
             ns_admin.abort(403, "Forbidden, only admins can create users")
+        data = request.get_json()
         password = ''.join(random.choice(string.digits) for _ in range(4))
         hashed_password = generate_password_hash(password)
-        user = User(username=ns_admin.payload['username'], 
+        user = User(username=data['username'], 
                     password_hash=hashed_password,
-                    role=ns_admin.payload['role'])
+                    role=data['role'])
         db.session.add(user)
         db.session.commit()
         return {'user': user, 'password': password}, 201
-    
-    
-    
+
 @ns_admin.route('/users/<int:id>')
 class EditUsers(Resource):
     method_decorators = [jwt_required()]
@@ -134,13 +132,13 @@ class EditUsers(Resource):
     @ns_admin.marshal_with(user_model)
     @ns_admin.doc(security='jsonWebToken')
     def put(self, id):
+        data = request.get_json()
         user = User.query.get(id)
-        user.username = ns_admin.payload['username']
-        user.access_v1 = ns_admin.payload['access_v1']
-        user.access_v2 = ns_admin.payload['access_v2']
+        user.username = data['username']
+        user.access_v1 = data['access_v1']
+        user.access_v2 = data['access_v2']
         db.session.commit()
         return user, 200
-    
 
     @ns_private.doc(security='jsonWebToken')
     def delete(self, id):
@@ -148,8 +146,6 @@ class EditUsers(Resource):
         db.session.delete(user)
         db.session.commit()
         return f"user {user} has been deleted", 204
-
-
 
 
 @ns_private.route('/users/<int:id>/change_password')
@@ -161,17 +157,14 @@ class UserChangePasswordAPI(Resource):
         user = User.query.get(id)
         if user is None:
             ns_private.abort(404, f"user with id {id} does not exist")
-        old_password = request.json['old_password']
-        new_password = request.json['new_password']
+        data = request.get_json()
+        old_password = data['old_password']
+        new_password = data['new_password']
         if not check_password_hash(user.password_hash, old_password):
             ns_private.abort(403, "Forbidden, password is incorrect")
         user.password_hash = generate_password_hash(new_password)
         db.session.commit()
         return user, 200
-    
-    
-from flask import request
-from flask_jwt_extended import current_user
 
 @ns_private.route('/v1/sentiment')
 class NLPSentimentPredictorV1(Resource):
@@ -183,11 +176,9 @@ class NLPSentimentPredictorV1(Resource):
         # Assuming current_user is set up by the JWT extension to represent the logged-in user
         if not current_user.access_v1 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
-        
-        data = request.json
+        data = request.get_json()
         text = data.get('text')
         sentiment, score = predict_sentiment_v1(text)
-        
         return {'text': text, 'sentiment': sentiment, 'score': score}, 200
 
 @ns_private.route('/v2/sentiment')
@@ -198,13 +189,11 @@ class NLPSentimentPredictorVader(Resource):
     @ns_private.doc(security='jsonWebToken')
     def post(self):
         # Assuming current_user is set up by the JWT extension to represent the logged-in user
-        if not current_user.access_v1 and 'admin' not in current_user.role:
+        if not current_user.access_v2 and 'admin' not in current_user.role:
             ns_private.abort(403, "Forbidden, user does not have access to NLP Model V1")
-        
-        data = request.json
+        data = request.get_json()
         text = data.get('text')
         analysis = predict_sentiment_vader(text)
-        
         response = {
             'text': text, 
             'positive': analysis['pos'],
@@ -213,5 +202,4 @@ class NLPSentimentPredictorVader(Resource):
             'score': analysis['compound'],
             'interpretation': analysis['interpretation']
         }, 200
-        
         return response
