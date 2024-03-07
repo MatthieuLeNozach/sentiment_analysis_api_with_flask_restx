@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: sentiment_api
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./instance:/app/instance  # Store SQLite database file in a persistent volume
+    networks:
+      - api_network
+
+  nlp_models:
+    build:
+      context: .
+      dockerfile: Dockerfile.nlp_models
+    ports:
+      - "5001:5001"
+    networks:
+      - api_network
+
+networks:
+  api_network:
+
+volumes:
+  api-persistence:
+  nlp-models-persistence:

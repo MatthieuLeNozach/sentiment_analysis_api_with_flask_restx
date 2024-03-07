@@ -1,0 +1,13 @@
+# Dockerfile.nlp_models
+FROM python:3.10.13-bookworm
+
+WORKDIR /app
+COPY ./app /app
+
+
+# Assuming requirements.txt is in the same directory as Dockerfile
+COPY ./requirements.txt /app
+
+RUN pip install -r /app/requirements.txt
+
+CMD ["python", "nlp_service.py"]

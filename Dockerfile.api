@@ -1,0 +1,23 @@
+FROM python:3.10.13-bookworm
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY ./bin /app/bin
+COPY ./app /app/app
+
+# Assuming requirements.txt is in the same directory as Dockerfile
+COPY ./requirements.txt /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r /app/requirements.txt
+
+# Copy the start.sh file into the bin directory in the container
+COPY ./bin/start.sh /app/bin/start.sh
+
+# Make the start.sh file executable
+RUN chmod +x /app/bin/start.sh
+
+# Run the start.sh file from the bin directory
+CMD ["/app/bin/start.sh"]
