@@ -1,4 +1,4 @@
-# **FCréation d'une API d'analyse de Sentiment**
+# **Création d'une API d'analyse de Sentiment**
 
 ## **Librairies**
 
