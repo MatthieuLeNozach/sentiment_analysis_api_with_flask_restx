@@ -1,4 +1,4 @@
-# **FLask Exam: Création d'une API d'analyse de Sentiment**
+# **FCréation d'une API d'analyse de Sentiment**
 
 ## **Librairies**
 
