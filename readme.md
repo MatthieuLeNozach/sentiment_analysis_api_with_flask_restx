@@ -1,5 +1,5 @@
 # **Création d'une API d'analyse de Sentiment**
-
+### ***Note: ce projet migre vers FastAPI, et ne sera plus suivi ici!*** 
 ## **Librairies**
 
 - **Outils**
